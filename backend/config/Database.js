@@ -1,6 +1,6 @@
 import { sequelize } from "sequelize";
 
-const db = new Sequelize('crud_db' , 'root', ''{
+const db = new Sequelize('studomat_lp_db' , 'root', '',{
     host: 'localhos',
     port: 'dialect'
 });

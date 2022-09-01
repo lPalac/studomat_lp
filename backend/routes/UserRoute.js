@@ -1,8 +1,8 @@
 import express from "express";
-import {} from "../controllers/UserController";
+import {getUsers} from "../controllers/UserController";
 
 const router = express.Router();
 
-router.get("/users", getUsers);
+router.get('/users', getUsers);
 
 export default router;
