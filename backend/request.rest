@@ -1,1 +1,25 @@
-GET http://localhost:5000/users
+GET http://localhost:5001/users
+################################
+GET http://localhost:5001/user/1
+################################
+POST http://localhost:5001/user
+Content-Type: application/json
+
+{
+    "name": "Luka Palac",
+    "email": "lp@mail.com",
+    "gender": "Male"
+}
+
+################################
+PUT http://localhost:5001/user/2
+Content-Type: application/json
+
+{
+    "name": "Jure Juric",
+    "email": "jj@mail.com",
+    "gender": "Male"
+}
+################################
+DELETE  http://localhost:5001/user/3
+
