@@ -5,7 +5,7 @@ const AddCourses = () => {
   return (
     <div>
       <Navigation />
-      <div className="ml-6">
+      <form className="ml-6" method="post" action="user">
         <h1 className="text-3xl font-bold mt-7 ">Novi Predmet</h1>
         <div className="">
           <h6 className=" mt-6">Ime Predmeta</h6>
@@ -94,7 +94,7 @@ const AddCourses = () => {
         <button className=" mt-6 bg-green-400 text-white w-24 p-2 rounded hover:bg-green-800 ">
           Save
         </button>
-      </div>
+      </form>
     </div>
   );
 };

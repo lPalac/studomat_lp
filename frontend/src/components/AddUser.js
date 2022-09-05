@@ -1,11 +1,12 @@
 import React from "react";
 import Navigation from "./Navigation";
-
+//TODO nastavit od 10:44 3 vid i napunit forme da se spajaju sa backendom
+//ostalo mi je jos backend 3 tablica spojit
 const AddUser = () => {
   return (
     <div>
       <Navigation />
-      <div className="ml-6">
+      <form className="ml-6" method="post" action="user">
         <h1 className="text-3xl font-bold mt-7 ">Novi Student</h1>
         <div className="">
           <h6 className=" mt-6">Ime</h6>
@@ -73,8 +74,8 @@ const AddUser = () => {
         <div>
           <h6 className=" mt-6">Status</h6>
           <select
-            name="gender"
-            id="gender"
+            name="status"
+            id="status"
             className="text-md px-3 py-2 rounded-lg w-52
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
@@ -90,7 +91,7 @@ const AddUser = () => {
         <button className=" mt-6 bg-green-400 text-white w-24 p-2 rounded hover:bg-green-800 ">
           Save
         </button>
-      </div>
+      </form>
     </div>
   );
 };
