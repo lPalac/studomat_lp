@@ -8,7 +8,10 @@ const User = db.define(
   {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
+    password: DataTypes.STRING,
     gender: DataTypes.STRING,
+    role: DataTypes.ENUM("mentor", "student"),
+    status: DataTypes.ENUM("none", "redovni", "izvanredni"),
   },
   {
     freezeTableName: true,
@@ -16,7 +19,8 @@ const User = db.define(
 );
 
 export default User;
-
+/*
 (async () => {
   await db.sync();
 })();
+*/
