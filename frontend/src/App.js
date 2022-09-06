@@ -4,6 +4,7 @@ import AddUser from "./components/AddUser.js";
 import Login from "./components/Login.js";
 import Courses from "./components/Courses.js";
 import AddCourses from "./components/AddCourses.js";
+import EditCourses from "./components/EditCourses.js";
 import EditUser from "./components/EditUser.js";
 import Dashboard from "./components/Dashboard.js";
 
@@ -19,6 +20,8 @@ function App() {
 
         <Route path="courses" element={<Courses />} />
         <Route path="addcourses" element={<AddCourses />} />
+        <Route path="editcourse/:id" element={<EditCourses />} />
+
         <Route path="dashboard" element={<Dashboard />} />
       </Routes>
     </BrowserRouter>
