@@ -6,9 +6,9 @@ const Subject = () => {
     <div className=" mt-5">
       <Navigation />
       <h1 className="text-2xl ml-4">Courses List</h1>
-      <div className="border border-gray-400 rounded  my-4">
+      <div className="  my-4">
         <div className="text-green-600 my-4 ml-4 cursor-pointer">
-          <Link to="/newcorses">New Courses</Link>
+          <Link to="/addcourses">New Courses</Link>
         </div>
         <div className="border border-gray-400 rounded py-1">
           <a className="px-4 " link="#">

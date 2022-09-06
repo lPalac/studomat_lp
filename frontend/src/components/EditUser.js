@@ -1,48 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navigation from "./Navigation";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const AddUser = () => {
+const EditUser = () => {
   const navigate = useNavigate();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    gender: "",
-    role: "",
-    status: "",
-  });
+  const { id } = useParams();
 
-  /* Radi i ovo ali cu napravit sve preko axiosa
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [role, setRole] = useState("");
+  const [status, setStatus] = useState("");
+  const [gender, setGender] = useState("");
 
-  const onSubmit = () => {
-    console.log(form);
-    //logic
-
-    fetch("http://localhost:5001/user", {
-      // Adding method type
-      method: "POST",
-      body: JSON.stringify(form),
-      headers: {
-        "Content-Type": "application/json; charset=UTF-8",
-      },
-    })
-      .then((response) => response.json())
-      //.then(console.log)
-      .catch((err) => console.log("Error", err));
-    navigate("/students");
-  };
-  */
-
-  const onSubmit = async (e) => {
+  const onUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5001/user", form);
+      await axios.put(`http://localhost:5001/user/${id}`, {
+        name,
+        email,
+        password,
+        role,
+        status,
+        gender,
+      });
       navigate("/students");
     } catch (error) {
       console.log("Error getting data", error);
     }
+  };
+
+  useEffect(() => {
+    getUserById();
+  }, []);
+
+  const getUserById = async () => {
+    const response = await axios.get(`http://localhost:5001/user/${id}`);
+    console.log(response.data);
+
+    setName(response.data.name);
+    setGender(response.data.gender);
+    setStatus(response.data.status);
+    setEmail(response.data.email);
+    setPassword(response.data.password);
+    setRole(response.data.role);
   };
 
   return (
@@ -54,35 +56,36 @@ const AddUser = () => {
           <h6 className=" mt-6">Ime</h6>
           <input
             type="text"
+            value={name}
             className="text-md block px-3 py-2 rounded-lg  
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
             placeholder="Ime"
-            onChange={(e) => setForm({ ...form, name: e.currentTarget.value })}
+            onChange={(e) => setName(e.currentTarget.value)}
           />
         </div>
         <div>
           <h6 className=" mt-6">Email</h6>
           <input
             type="text"
+            value={email}
             placeholder="Email"
             className="text-md block px-3 py-2 rounded-lg
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
-            onChange={(e) => setForm({ ...form, email: e.currentTarget.value })}
+            onChange={(e) => setEmail(e.currentTarget.value)}
           />
         </div>
         <div>
           <h6 className=" mt-6">Password</h6>
           <input
             type="password : text"
+            value={password}
             placeholder="Password"
             className="text-md block px-3 py-2 rounded-lg
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
-            onChange={(e) =>
-              setForm({ ...form, password: e.currentTarget.value })
-            }
+            onChange={(e) => setPassword(e.currentTarget.value)}
           />
         </div>
         <div>
@@ -90,12 +93,11 @@ const AddUser = () => {
           <select
             name="gender"
             id="gender"
+            value={gender}
             className="text-md px-3 py-2 rounded-lg w-52
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
-            onChange={(e) =>
-              setForm({ ...form, gender: e.currentTarget.value })
-            }
+            onChange={(e) => setGender(e.currentTarget.value)}
           >
             <option value="" disabled selected hidden>
               Select a gender
@@ -110,10 +112,11 @@ const AddUser = () => {
           <select
             name="role"
             id="role"
+            value={role}
             className="text-md px-3 py-2 rounded-lg w-52
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
-            onChange={(e) => setForm({ ...form, role: e.currentTarget.value })}
+            onChange={(e) => setRole(e.currentTarget.value)}
           >
             <option value="" disabled selected hidden>
               Select a role
@@ -127,12 +130,11 @@ const AddUser = () => {
           <select
             name="status"
             id="status"
+            value={status}
             className="text-md px-3 py-2 rounded-lg w-52
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
-            onChange={(e) =>
-              setForm({ ...form, status: e.currentTarget.value })
-            }
+            onChange={(e) => setStatus(e.currentTarget.value)}
           >
             <option value="" disabled selected hidden>
               Select a status
@@ -144,13 +146,13 @@ const AddUser = () => {
         </div>
         <button
           className=" mt-6 bg-green-400 text-white w-24 p-2 rounded hover:bg-green-800 "
-          onClick={onSubmit}
+          onClick={onUpdate}
         >
-          Save
+          Update
         </button>
       </div>
     </div>
   );
 };
 
-export default AddUser;
+export default EditUser;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="flex flex-col items-center ">
@@ -26,7 +26,7 @@ const Login = () => {
                 focus:outline-none"
         />
       </div>
-
+      <Link to="registration">Registration</Link>
       <button className=" mt-6 bg-green-400 text-white w-16 p-2 rounded hover:bg-green-800 ">
         Login
       </button>

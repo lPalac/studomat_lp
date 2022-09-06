@@ -2,8 +2,6 @@
 
 var _express = _interopRequireDefault(require("express"));
 
-var _expressHandlebars = _interopRequireDefault(require("express-handlebars"));
-
 var _bodyParser = _interopRequireDefault(require("body-parser"));
 
 var _path = _interopRequireDefault(require("path"));
@@ -20,15 +18,11 @@ var _Database = _interopRequireDefault(require("./config/Database.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var app = (0, _express["default"])(); //handlebars
-
-app.engine("handlebars", (0, _expressHandlebars["default"])({
-  defaultLayout: "main"
-}));
-app.set("view engine", "handelbars");
+var app = (0, _express["default"])();
 var SERVERPORT = process.env.PORT || 5001;
 app.use((0, _cors["default"])());
 app.use(_express["default"].json());
+app.use(_bodyParser["default"].json());
 app.use(_UserRoute["default"]);
 app.use(_EnrollmentRoute["default"]);
 app.use(_CourseRoute["default"]); //test db

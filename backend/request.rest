@@ -6,9 +6,12 @@ POST http://localhost:5001/user
 Content-Type: application/json
 
 {
-    "name": "Luka Palac",
-    "email": "lp@mail.com",
-    "gender": "Male"
+    "name": "studentr",
+    "email": "mp@mail.com",
+    "password": "studentr",
+    "gender": "Female",
+    "role": "student",
+    "status": "redovni"
 }
 
 ################################
@@ -16,10 +19,53 @@ PUT http://localhost:5001/user/2
 Content-Type: application/json
 
 {
-    "name": "Jure Juric",
-    "email": "jj@mail.com",
-    "gender": "Male"
+    "name": "Mate Matic",
+    "email": "mt@mail.com",
+    "password": "Mate",
+    "gender": "Male",
+    "role": "student",
+    "status": "redovni"
 }
 ################################
-DELETE  http://localhost:5001/user/3
+DELETE  http://localhost:5001/user/10
+
+################################
+///COURSES
+
+GET http://localhost:5001/courses
+################################
+GET http://localhost:5001/course/1
+################################
+POST http://localhost:5001/course
+Content-Type: application/json
+
+{
+    
+    "ime": "test",
+    "kod": "SIT001",
+    "program": "Program nije unesen",
+    "bodovi": 5,
+    "semestar_redovni": 1,
+    "semestar_izvanredni": 1,
+    "izborni": "ne",
+    "createdAt": "2022-09-05T19:38:46.985Z",
+    "updatedAt": "2022-09-05T19:38:46.985Z"
+}
+
+################################
+PUT http://localhost:5001/course/2
+Content-Type: application/json
+
+{
+  "ime": "test",
+    "kod": "SIT001",
+    "program": "Program nije unesen",
+    "bodovi": 5,
+    "semestar_redovni": 1,
+    "semestar_izvanredni": 1,
+    "izborni": "ne",
+}
+################################
+DELETE  http://localhost:5001/course/10
+
 

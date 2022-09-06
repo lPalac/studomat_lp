@@ -14,6 +14,7 @@ const SERVERPORT = process.env.PORT || 5001;
 
 app.use(cors());
 app.use(express.json());
+app.use(bodyParser.json());
 
 app.use(UserRoute);
 app.use(EnrollmentRoute);
