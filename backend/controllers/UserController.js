@@ -23,7 +23,21 @@ export const getUserById = async (req, res) => {
 export const createUserById = async (req, res) => {
   console.log("req.body", req.body);
   try {
-    await User.create(req.body);
+    const salt = await bcyrpt.genSalt();
+    const hashedPassword = await bcyrpt.hash(req.body.password, salt);
+    console.log(salt);
+    console.log(hashedPassword);
+
+    const user = {
+      name: req.body.name,
+      email: req.body.email,
+      password: hashedPassword,
+      role: req.body.role,
+      gender: req.body.gender,
+      status: req.body.status,
+    };
+
+    await User.create(user);
     return res.status(201).json({ msg: "User Created" });
   } catch (error) {
     console.log(error.message);

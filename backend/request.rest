@@ -68,4 +68,14 @@ Content-Type: application/json
 ################################
 DELETE  http://localhost:5001/course/10
 
+###############################
+//LOGIN
+
+POST http://localhost:5001/login
+Content-Type: application/json
+
+{
+    "username":"Lukc"
+}
+
 

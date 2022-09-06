@@ -76,6 +76,7 @@ var getUserById = function getUserById(req, res) {
 exports.getUserById = getUserById;
 
 var createUserById = function createUserById(req, res) {
+  var salt, hashedPassword, user;
   return regeneratorRuntime.async(function createUserById$(_context3) {
     while (1) {
       switch (_context3.prev = _context3.next) {
@@ -83,24 +84,44 @@ var createUserById = function createUserById(req, res) {
           console.log("req.body", req.body);
           _context3.prev = 1;
           _context3.next = 4;
-          return regeneratorRuntime.awrap(_UserModel["default"].create(req.body));
+          return regeneratorRuntime.awrap(bcyrpt.genSalt());
 
         case 4:
+          salt = _context3.sent;
+          _context3.next = 7;
+          return regeneratorRuntime.awrap(bcyrpt.hash(req.body.password, salt));
+
+        case 7:
+          hashedPassword = _context3.sent;
+          console.log(salt);
+          console.log(hashedPassword);
+          user = {
+            name: req.body.name,
+            email: req.body.email,
+            password: hashedPassword,
+            role: req.body.role,
+            gender: req.body.gender,
+            status: req.body.status
+          };
+          _context3.next = 13;
+          return regeneratorRuntime.awrap(_UserModel["default"].create(user));
+
+        case 13:
           return _context3.abrupt("return", res.status(201).json({
             msg: "User Created"
           }));
 
-        case 7:
-          _context3.prev = 7;
+        case 16:
+          _context3.prev = 16;
           _context3.t0 = _context3["catch"](1);
           console.log(_context3.t0.message);
 
-        case 10:
+        case 19:
         case "end":
           return _context3.stop();
       }
     }
-  }, null, null, [[1, 7]]);
+  }, null, null, [[1, 16]]);
 };
 
 exports.createUserById = createUserById;
