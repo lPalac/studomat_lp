@@ -18,11 +18,19 @@ var _Database = _interopRequireDefault(require("./config/Database.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
+var bcrypt = require("bcrypt");
+
+var jwt = require("jsonwebtoken");
+
 var app = (0, _express["default"])();
 var SERVERPORT = process.env.PORT || 5001;
 app.use((0, _cors["default"])());
 app.use(_express["default"].json());
-app.use(_bodyParser["default"].json());
+app.use(_bodyParser["default"].json()); //register routes
+
+router.post("/api/registration", function (req, res) {});
+router.post("/api/login", function (req, res) {});
+router.post("/secret-route", function (req, res) {});
 app.use(_UserRoute["default"]);
 app.use(_EnrollmentRoute["default"]);
 app.use(_CourseRoute["default"]); //test db
