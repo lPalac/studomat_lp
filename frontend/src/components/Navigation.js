@@ -7,6 +7,9 @@ const Navigation = () => {
       <Link to="/dashboard" className="cursor-pointer">
         Dashboard
       </Link>
+      <Link to="/courseslistsusers" className="cursor-pointer">
+        Courses Lists Users
+      </Link>
       <Link to="/courses" className="cursor-pointer">
         Courses
       </Link>

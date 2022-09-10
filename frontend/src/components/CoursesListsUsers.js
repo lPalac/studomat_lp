@@ -39,13 +39,10 @@ const Courses = () => {
         <thead>
           <tr>
             <th>ID</th>
-            <th>Ime</th>
-            <th>Kod</th>
-            <th>Program</th>
-            <th>Bodovi</th>
-            <th>Semestar_redovni</th>
-            <th>Semestar_izvanredni</th>
-            <th>Izborni</th>
+            <th>Naziv predmeta</th>
+            <th>Broj studenata koji je polzio predmet</th>
+            <th>Redovnih koji su polozili</th>
+            <th>Izvanredni koju si polozili</th>
           </tr>
         </thead>
         <tbody>
@@ -56,28 +53,19 @@ const Courses = () => {
             >
               <td className="p-3">{index + 1}</td>
               <td className="p-4 bg-slate-200 ">{course.ime}</td>
-              <td className="p-4">{course.kod}</td>
-              <td className="p-4 bg-slate-200 ">{course.program}</td>
-              <td className="p-4">{course.bodovi}</td>
+              <td className="p-4">
+                {course.semestar_redovni + course.semestar_izvanredni}
+              </td>
               <td className="p-4 bg-slate-200 ">{course.semestar_redovni}</td>
               <td className="p-4">{course.semestar_izvanredni}</td>
-              <td className="p-4 bg-slate-200 ">{course.izborni}</td>
 
               <td className="">
                 <Link
-                  to={`/editcourse/${course.id}`}
+                  to={`/detailcourse/${course.id}`}
                   className="text-blue-500 p-4 "
                 >
-                  Edit
+                  vidi detalje
                 </Link>
-              </td>
-              <td>
-                <button
-                  onClick={() => deleteCourse(course.id)}
-                  className="text-red-500 bg-red-100 p-4"
-                >
-                  Delete
-                </button>
               </td>
             </tr>
           ))}

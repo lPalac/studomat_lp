@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 import Navigation from "./Navigation";
 import { useNavigate } from "react-router-dom";
@@ -6,13 +7,24 @@ import { useNavigate } from "react-router-dom";
 const AddCourses = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    gender: "",
-    role: "",
-    status: "",
+    ime: "",
+    kod: "",
+    program: "",
+    bodovi: "",
+    semestar_redovni: "",
+    semestar_izvanredni: "",
+    izborni: "",
   });
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post("http://localhost:5001/course", form);
+      navigate("/courses");
+    } catch (error) {
+      console.log("Error getting data", error);
+    }
+  };
+  /*
   const onSubmit = () => {
     console.log(form);
     //logic
@@ -36,7 +48,8 @@ const AddCourses = () => {
       .catch((err) => console.log("Error", err));
 
     navigate("/courses");
-  };
+  };*/
+
   return (
     <div>
       <Navigation />

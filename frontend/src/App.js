@@ -7,6 +7,8 @@ import AddCourses from "./components/AddCourses.js";
 import EditCourses from "./components/EditCourses.js";
 import EditUser from "./components/EditUser.js";
 import Dashboard from "./components/Dashboard.js";
+import CoursesListsUsers from "./components/CoursesListsUsers.js";
+import DetailsCourse from "./components/DetailsCourse.js";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 function App() {
@@ -21,8 +23,11 @@ function App() {
         <Route path="courses" element={<Courses />} />
         <Route path="addcourses" element={<AddCourses />} />
         <Route path="editcourse/:id" element={<EditCourses />} />
+        <Route path="detailcourse/:id" element={<DetailsCourse />} />
 
         <Route path="dashboard" element={<Dashboard />} />
+
+        <Route path="courseslistsusers" element={<CoursesListsUsers />} />
       </Routes>
     </BrowserRouter>
   );

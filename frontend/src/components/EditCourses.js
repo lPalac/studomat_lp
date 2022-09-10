@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import Navigation from "./Navigation";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const EditCourses = () => {
+  const { id } = useParams();
+
   const [ime, setIme] = useState("");
   const [kod, setKod] = useState("");
   const [program, setProgram] = useState("");
@@ -32,6 +34,24 @@ const EditCourses = () => {
       console.log("Error getting data", error);
     }
   };
+
+  useEffect(() => {
+    getCourseById();
+  }, []);
+
+  const getCourseById = async () => {
+    const response = await axios.get(`http://localhost:5001/course/${id}`);
+    console.log(response.data);
+
+    setIme(response.data.ime);
+    setKod(response.data.kod);
+    setProgram(response.data.status);
+    setBodovi(response.data.bodovi);
+    setSemestarRedovni(response.data.semestar_redovni);
+    setSemestarizvanredni(response.data.semestar_izvanredni);
+
+    setIzborni(response.data.izborni);
+  };
   return (
     <div>
       <Navigation />
@@ -41,6 +61,7 @@ const EditCourses = () => {
           <h6 className=" mt-6">Ime Predmeta</h6>
           <input
             type="text"
+            value={ime}
             className="text-md block px-3 py-2 rounded-lg  
                 bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
@@ -51,6 +72,7 @@ const EditCourses = () => {
         <div>
           <h6 className=" mt-6">Kod</h6>
           <input
+            value={kod}
             type="text"
             placeholder="Kod"
             className="text-md block px-3 py-2 rounded-lg
@@ -62,6 +84,7 @@ const EditCourses = () => {
         <div>
           <h6 className=" mt-6">Program</h6>
           <input
+            value={program}
             type="text"
             placeholder="Program"
             className="text-md block px-3 py-2 rounded-lg
@@ -73,6 +96,7 @@ const EditCourses = () => {
         <div>
           <h6 className=" mt-6">Bodovi</h6>
           <input
+            value={bodovi}
             type="number"
             placeholder="Bodovi"
             className="text-md block px-3 py-2 rounded-lg
@@ -84,6 +108,7 @@ const EditCourses = () => {
         <div>
           <h6 className=" mt-6">Semestar redovni</h6>
           <select
+            value={semestar_redovni}
             name="semestar_redovni"
             id="semestar_redovni"
             className="text-md px-3 py-2 rounded-lg w-52
@@ -91,9 +116,6 @@ const EditCourses = () => {
                 focus:border-gray-600 focus:outline-none"
             onChange={(e) => setSemestarRedovni(e.currentTarget.value)}
           >
-            <option value="" disabled selected hidden>
-              Semestar redovni
-            </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -107,6 +129,7 @@ const EditCourses = () => {
         <div>
           <h6 className=" mt-6">Semestar izvanredni</h6>
           <select
+            value={semestar_izvanredni}
             name="semestar_izvanredni"
             id="semestar_izvanredni"
             className="text-md px-3 py-2 rounded-lg w-52
@@ -114,9 +137,6 @@ const EditCourses = () => {
                 focus:border-gray-600 focus:outline-none"
             onChange={(e) => setSemestarizvanredni(e.currentTarget.value)}
           >
-            <option value="" disabled selected hidden>
-              Semestar izvanredni
-            </option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -128,10 +148,11 @@ const EditCourses = () => {
           </select>
         </div>
         <div>
-          <h6 className=" mt-6">Semestar izvanredni</h6>
+          <h6 className=" mt-6">Izborni</h6>
           <select
-            name="semestar_izvanredni"
-            id="semestar_izvanredni"
+            value={izborni}
+            name="izborni"
+            id="izborni"
             className="text-md px-3 py-2 rounded-lg w-52
                 border-2 border-gray-300 placeholder-gray-600 shadow-md
                 focus:border-gray-600 focus:outline-none"
