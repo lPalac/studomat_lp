@@ -41,12 +41,12 @@ Content-Type: application/json
 
 {
     
-    "ime": "test",
-    "kod": "SIT001",
+    "ime": "Digitalna",
+    "kod": "SIT002",
     "program": "Program nije unesen",
     "bodovi": 5,
-    "semestar_redovni": 1,
-    "semestar_izvanredni": 1,
+    "semestar_redovni": 6,
+    "semestar_izvanredni": 3,
     "izborni": "ne",
     "createdAt": "2022-09-05T19:38:46.985Z",
     "updatedAt": "2022-09-05T19:38:46.985Z"
@@ -69,3 +69,22 @@ Content-Type: application/json
 DELETE  http://localhost:5001/course/10
 
 
+###########
+
+GET http://localhost:5001/enrollments
+###
+###getenrollmentbyCourseId
+GET http://localhost:5001/enrollment/1
+###
+
+################################
+
+POST http://localhost:5001/enrollment
+Content-Type: application/json
+
+{
+    
+    "userid": "2",
+    "courseid": "2",
+    "status": "Polozio",
+}

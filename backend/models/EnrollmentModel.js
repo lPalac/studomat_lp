@@ -6,9 +6,17 @@ const { DataTypes } = Sequelize;
 const Enrollment = db.define(
   "enrollment",
   {
+    userid: {
+      type: DataTypes.INTEGER,
+      references: { model: "users", key: "id" },
+    },
+    courseid: {
+      type: DataTypes.INTEGER,
+      references: { model: "course", key: "id" },
+    },
     status: DataTypes.STRING,
-    izborni: DataTypes.ENUM("da", "ne"),
   },
+
   {
     freezeTableName: true,
   }
