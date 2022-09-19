@@ -6,6 +6,7 @@ const { DataTypes } = Sequelize;
 const Course = db.define(
   "course",
   {
+    id: { type: DataTypes.INTEGER, primaryKey: true },
     ime: DataTypes.STRING,
     kod: DataTypes.STRING,
     program: DataTypes.STRING,

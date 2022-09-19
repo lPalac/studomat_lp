@@ -7,6 +7,7 @@ import UserRoute from "./routes/UserRoute.js";
 import EnrollmentRoute from "./routes/EnrollmentRoute.js";
 import CourseRoute from "./routes/CourseRoute.js";
 import db from "./config/Database.js";
+//import jwt from "./jwt.js";
 
 const app = express();
 

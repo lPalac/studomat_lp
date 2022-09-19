@@ -21,6 +21,7 @@ const Enrollment = db.define(
     freezeTableName: true,
   }
 );
+Enrollment.associate = () => {};
 
 export default Enrollment;
 /*
