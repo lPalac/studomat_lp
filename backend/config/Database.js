@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 
+/*
 const db = new Sequelize("studomat_lp_db", "postgres", "kralj321", {
   host: "localhost",
   dialect: "postgres",
@@ -8,14 +9,15 @@ const db = new Sequelize("studomat_lp_db", "postgres", "kralj321", {
 });
 
 export default db;
-
-/*
-import { Sequelize } from "sequelize";
+*/
 
 const db = new Sequelize("studomat_lp_db", "root", "", {
   host: "localhost",
   dialect: "mysql",
 });
-export default db;
 
- */
+(async () => {
+  await db.sync();
+})();
+
+export default db;

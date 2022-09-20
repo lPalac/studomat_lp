@@ -1,12 +1,12 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-
+import enrollmentModel from "./EnrollmentModel.js";
 const { DataTypes } = Sequelize;
 
 const Course = db.define(
   "course",
   {
-    id: { type: DataTypes.INTEGER, primaryKey: true },
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     ime: DataTypes.STRING,
     kod: DataTypes.STRING,
     program: DataTypes.STRING,
@@ -15,15 +15,16 @@ const Course = db.define(
     semestar_izvanredni: DataTypes.INTEGER,
     izborni: DataTypes.ENUM("da", "ne"),
   },
-  {
-    freezeTableName: true,
-  }
+  { timestamps: false }
 );
 
+Course.associate = (models) => {
+  Course.hasMany(models.enrollmentModel, {
+    onDelete: "SET NULL",
+  });
+};
 export default Course;
-/*
-(async () => {
-  await db.sync();
-})();
 
-*/
+// (async () => {
+//   await db.sync();
+// })();
