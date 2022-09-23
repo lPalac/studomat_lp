@@ -27,15 +27,17 @@ const UserList = () => {
   };
 
   return (
-    <div className=" mt-5">
+    <div className="mt-5 ">
       <Navigation />
 
-      <h1 className="text-2xl ml-4">Student List</h1>
-      <div className="text-green-600 my-4 ml-4 cursor-pointer">
+      <h1 className="ml-4 text-2xl">Student List</h1>
+      <div className="my-4 ml-4 text-green-600 cursor-pointer">
         <Link to="/registration">Registration</Link>
       </div>
-
-      <table className=" w-full">
+      <div className="my-4 ml-4 text-green-600 cursor-pointer">
+        <Link to="/addenrollment">Add Enrollment</Link>
+      </div>
+      <table className="w-full ">
         <thead>
           <tr>
             <th>ID</th>
@@ -47,7 +49,7 @@ const UserList = () => {
         <tbody>
           {users.map((user, index) => (
             <tr
-              className="border-2  border-gray-500 rounded text-center my-4"
+              className="my-4 text-center border-2 border-gray-500 rounded"
               key={user.id}
             >
               <td className="p-3">{index + 1}</td>
@@ -57,7 +59,7 @@ const UserList = () => {
               <td className="">
                 <Link
                   to={`/editstudent/${user.id}`}
-                  className="text-blue-500 p-4 "
+                  className="p-4 text-blue-500 "
                 >
                   Edit
                 </Link>
@@ -65,7 +67,7 @@ const UserList = () => {
               <td>
                 <button
                   onClick={() => deleteUser(user.id)}
-                  className="text-red-500 bg-red-100 p-4"
+                  className="p-4 text-red-500 bg-red-100"
                 >
                   Delete
                 </button>

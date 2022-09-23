@@ -3,9 +3,12 @@ import { Link } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <div className="flex justify-evenly border-gray-100 my-3 py-3 border-b-2">
+    <div className="flex py-3 my-3 border-b-2 border-gray-100 justify-evenly">
       <Link to="/dashboard" className="cursor-pointer">
         Dashboard
+      </Link>
+      <Link to="/userswithcourses" className="cursor-pointer">
+        UsersWithCourses
       </Link>
       <Link to="/courseslistsusers" className="cursor-pointer">
         Courses Lists Users
@@ -16,7 +19,7 @@ const Navigation = () => {
       <Link to="/students " className="cursor-pointer">
         Students
       </Link>
-      <Link to="/" className=" cursor-pointer text-gray-400">
+      <Link to="/" className="text-gray-400 cursor-pointer ">
         Logout
       </Link>
     </div>

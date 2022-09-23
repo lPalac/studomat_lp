@@ -16,8 +16,9 @@ const db = new Sequelize("studomat_lp_db", "root", "", {
   dialect: "mysql",
 });
 
+/*
 (async () => {
   await db.sync();
 })();
-
+*/
 export default db;

@@ -56,61 +56,51 @@ const AddCourses = () => {
       <form className="ml-6">
         <h1 className="text-3xl font-bold mt-7 ">Novi Predmet</h1>
         <div className="">
-          <h6 className=" mt-6">Ime Predmeta</h6>
+          <h6 className="mt-6 ">Ime Predmeta</h6>
           <input
             type="text"
-            className="text-md block px-3 py-2 rounded-lg  
-                bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="block px-3 py-2 placeholder-gray-600 bg-white border-2 border-gray-300 rounded-lg shadow-md text-md focus:border-gray-600 focus:outline-none"
             placeholder="Ime"
             onChange={(e) => setForm({ ...form, ime: e.currentTarget.value })}
           />
         </div>
         <div>
-          <h6 className=" mt-6">Kod</h6>
+          <h6 className="mt-6 ">Kod</h6>
           <input
             type="text"
             placeholder="Kod"
-            className="text-md block px-3 py-2 rounded-lg
-                border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="block px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md focus:border-gray-600 focus:outline-none"
             onChange={(e) => setForm({ ...form, kod: e.currentTarget.value })}
           />
         </div>
         <div>
-          <h6 className=" mt-6">Program</h6>
+          <h6 className="mt-6 ">Program</h6>
           <input
             type="text"
             placeholder="Program"
-            className="text-md block px-3 py-2 rounded-lg
-                border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="block px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md focus:border-gray-600 focus:outline-none"
             onChange={(e) =>
               setForm({ ...form, program: e.currentTarget.value })
             }
           />
         </div>
         <div>
-          <h6 className=" mt-6">Bodovi</h6>
+          <h6 className="mt-6 ">Bodovi</h6>
           <input
             type="number"
             placeholder="Bodovi"
-            className="text-md block px-3 py-2 rounded-lg
-                border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="block px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md focus:border-gray-600 focus:outline-none"
             onChange={(e) =>
               setForm({ ...form, bodovi: e.currentTarget.value })
             }
           />
         </div>
         <div>
-          <h6 className=" mt-6">Semestar redovni</h6>
+          <h6 className="mt-6 ">Semestar redovni</h6>
           <select
             name="semestar_redovni"
             id="semestar_redovni"
-            className="text-md px-3 py-2 rounded-lg w-52
-                border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md w-52 focus:border-gray-600 focus:outline-none"
             onChange={(e) =>
               setForm({ ...form, semestar_redovni: e.currentTarget.value })
             }
@@ -129,13 +119,11 @@ const AddCourses = () => {
           </select>
         </div>
         <div>
-          <h6 className=" mt-6">Semestar izvanredni</h6>
+          <h6 className="mt-6 ">Semestar izvanredni</h6>
           <select
             name="semestar_izvanredni"
             id="semestar_izvanredni"
-            className="text-md px-3 py-2 rounded-lg w-52
-                border-2 border-gray-300 placeholder-gray-600 shadow-md
-                focus:border-gray-600 focus:outline-none"
+            className="px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md w-52 focus:border-gray-600 focus:outline-none"
             onChange={(e) =>
               setForm({ ...form, semestar_izvanredni: e.currentTarget.value })
             }
@@ -153,8 +141,25 @@ const AddCourses = () => {
             <option value="8">8</option>
           </select>
         </div>
+        <div>
+          <h6 className="mt-6 ">Izborni</h6>
+          <select
+            name="izborni"
+            id="izborni"
+            className="px-3 py-2 placeholder-gray-600 border-2 border-gray-300 rounded-lg shadow-md text-md w-52 focus:border-gray-600 focus:outline-none"
+            onChange={(e) =>
+              setForm({ ...form, izborni: e.currentTarget.value })
+            }
+          >
+            <option value="" disabled selected hidden>
+              Izborni
+            </option>
+            <option value="1">Da</option>
+            <option value="2">Ne</option>
+          </select>
+        </div>
         <button
-          className=" mt-6 bg-green-400 text-white w-24 p-2 rounded hover:bg-green-800 "
+          className="w-24 p-2 mt-6 text-white bg-green-400 rounded hover:bg-green-800"
           onClick={onSubmit}
         >
           Save

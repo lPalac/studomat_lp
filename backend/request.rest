@@ -1,6 +1,6 @@
 GET http://localhost:5001/users
 ################################
-GET http://localhost:5001/user/1
+GET http://localhost:5001/user/2
 ################################
 POST http://localhost:5001/user
 Content-Type: application/json
@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 
 ################################
-PUT http://localhost:5001/user/2
+PUT http://localhost:5001/user/6
 Content-Type: application/json
 
 {
@@ -83,8 +83,17 @@ POST http://localhost:5001/enrollment
 Content-Type: application/json
 
 {
-    
-    "userid": "2",
-    "courseid": "2",
+
+    "userid": "1",
+    "courseid": "3",
     "status": "Polozio",
+
 }
+
+###########
+
+GET http://localhost:5001/enrollmentCourse/2
+###
+###getenrollmentbyCourseId
+GET http://localhost:5001/enrollmentUser/2
+###

@@ -14,7 +14,7 @@ const Enrollment = db.define(
     },
     courseid: {
       type: DataTypes.INTEGER,
-      references: { model: "courses", key: "id" },
+      references: { model: "course", key: "id" },
     },
     status: DataTypes.STRING,
   },
